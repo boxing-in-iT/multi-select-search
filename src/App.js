@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Input from "./components/Input";
+import { useState } from "react";
+
+const options = [
+  { label: "First", value: 1 },
+  { label: "Second", value: 2 },
+  { label: "Third", value: 3 },
+];
 
 function App() {
+  const [value, setValue] = useState(options[0]);
+  const [value1, setValue1] = useState([options[0]]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="center">
+      <Input
+        multiple={false}
+        options={options}
+        value={value}
+        onChange={(o) => setValue(o)}
+      />
+      <br />
+      <Input
+        multiple={true}
+        options={options}
+        value={value1}
+        onChange={(o) => setValue1(o)}
+      />
     </div>
   );
 }
